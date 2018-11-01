@@ -1,7 +1,9 @@
 #install.packages("geoR")
+#install.packages("rstudioapi")
 
+library(rstudioapi)
 
-setwd("/home/michael/skola/sgs/shiny_app/")
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
 
 library(geoR)
 data(s100)
