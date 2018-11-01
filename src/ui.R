@@ -1,6 +1,9 @@
 #install.packages("shiny")
 # install.packages("shinydashboard")
 
+setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+setwd("../texts")
+
 library(shiny)
 library(shinydashboard)
 
