@@ -71,7 +71,9 @@ shinyUI(
                                             'Exponential',
                                             'Gaussian',
                                             'Cubic')
-                                          )
+                                          ),
+                    uiOutput("nugetSlider")
+                    
                    ),
                 box(width = 7, 
                     plotOutput("variogram")
