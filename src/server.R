@@ -19,11 +19,25 @@ shinyServer
 (
   function(input,output,session)
     {
+    
     bin1 <- variog(s100, uvec=seq(0,1,l=11))
     
     output$nugetSlider <- renderUI({
       sliderInput("nugget","Nugget",min = 0,max = round(min(bin1$v),2),value = 0)
     })
+    
+    output$binSlider <- renderUI({
+      sliderInput("bins","Bins",min = 0,max = 100,value = 11)
+    })
+    
+    output$sillSlider <- renderUI({
+      sliderInput("sill","Sill",min = 0,max = 2*round(max(bin1$v),2),value = 1)
+    })
+    
+    output$rangeSlider <- renderUI({
+      sliderInput("range","Range",min = 0,max = 1,value = 0.3)
+    })
+    
     
       output$variogram <- renderPlot({
         nuget <- 0
@@ -33,9 +47,17 @@ shinyServer
                          'Gaussian' = "gaussian",
                          'Cubic' = 'cubic'
                        )
+        #fixedNuget <-switch(input$fixnuget,
+        #                    TRUE,
+        #                    FALSE)
         nuget <- input$nugget
+        bins <- input$bins
+        sill <- input$sill
+        range <- input$range
+        
+        bin1 <- variog(s100, uvec=seq(0,1,l=bins))
         plot(bin1)
-        lines.variomodel(cov.model = choosen, cov.pars = c(1,0.3), nugget = nuget, max.dist = 1,  lwd = 3)
+        lines.variomodel(cov.model = choosen, cov.pars = c(sill, range), nugget = nuget, max.dist = 1,  lwd = 3)
       
       }      )  
     

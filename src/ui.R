@@ -72,7 +72,19 @@ shinyUI(
                                             'Gaussian',
                                             'Cubic')
                                           ),
-                    uiOutput("nugetSlider")
+                    hr(),
+                    uiOutput("binSlider"),
+                    hr(),
+                    uiOutput("nugetSlider"),
+                    hr(),
+                    #checkboxInput('fixnuget', 
+                    #              label = 'Fixed nugget', 
+                    #              value = FALSE),
+                    #hr(),
+                    uiOutput("sillSlider"),
+                    hr(),
+                    uiOutput("rangeSlider")
+                    
                     
                    ),
                 box(width = 7, 
