@@ -45,19 +45,19 @@ shinyUI(
         tabItem("Introduction", 
                 h2("Introduction"),
                 hr(),
-                includeText("introduction.txt")
+                includeHTML("introduction.html")
                 ),
         
         tabItem("geostatistics", 
                 h2("Geostatistics"),
                 hr(),
-                includeText("geostatistics.txt")
+                includeHTML("geostatistics.html")
                 ),
 
         tabItem("kriging_in_general",
                 h2("Kriging in general"),
                 hr(),
-                includeText("general_kriging.txt")
+                includeHTML("general_kriging.html")
                 ),
         
         tabItem("kriging_non_robust", 
