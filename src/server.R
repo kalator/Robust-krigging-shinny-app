@@ -1,5 +1,6 @@
 #install.packages("geoR")
 #install.packages("rstudioapi")
+#install.packages("georob")
 
 library(rstudioapi)
 
@@ -11,6 +12,14 @@ data(s100)
 cloud1 <- variog(s100, option = "cloud", max.dist=1)
 cloud2 <- variog(s100, option = "cloud", estimator.type = "modulus", max.dist=1)
 bin2  <- variog(s100, uvec=seq(0,1,l=11), estimator.type= "modulus")
+
+library(georob)
+data(meuse, package="sp")
+r.lm <- lm(log(zinc)~sqrt(dist)+ffreq, meuse)
+r.sv <- sample.variogram(residuals(r.lm), locations=meuse[, c("x","y")],
+                         lag.dist.def=100, max.lag=2000,
+                         estimator="matheron")
+#plot(r.sv)
 
 
 
@@ -59,7 +68,25 @@ shinyServer
         plot(bin1)
         lines.variomodel(cov.model = choosen, cov.pars = c(sill, range), nugget = nuget, max.dist = 1,  lwd = 3)
       
-      }      )  
+      }      )
+      
+      
+      output$robust_variogram <- renderPlot({
+        nuget <- 0
+        choosen <- switch(input$variogram.model,
+                          'Spherical' = "RMspheric",
+                          'Exponential' = "RMexp",
+                          'Gaussian' = "RMgauss",
+                          'Cubic' = "RMcubic")
+        
+        plot(r.sv)
+        
+        
+        lines(r.sv.spher <- fit.variogram.model(r.sv, variogram.mode=choosen,
+                                                param=c(variance=0.1, nugget=0.05, scale=1000)))
+        
+        
+      })
     
     
   }
