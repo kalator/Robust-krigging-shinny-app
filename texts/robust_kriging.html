@@ -1,0 +1,31 @@
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+There is a formula for calculating estimate predicted value. The formula uses values 
+of nearby points and their weights.
+</p>
+
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+Robust statistic very often uses lognormal kriging. It is a kind of kriging, which 
+is logarithmicly transformed to testing data. At first the data are trasformed to 
+natural logarithm, eventually into decadic logarithm. The result is in the end 
+reversed. It is necessary to fix it by systematic errors.
+
+</p>
+
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+Lognormal kriging:
+</p>
+
+<img src="pictures\lognormal.jpg" width="200" height="40">
+
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+Reverse including the correction of systematic error:
+</p>
+
+<img src="pictures\lognormal_reverse.jpg" width="200" height="50">
+
+
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+The technique of lognormal kriging is very often used because of it decreasing 
+scatter of testing data. The result is still partly distorted, because the data 
+is dependent on semivariogram.
+</p>
