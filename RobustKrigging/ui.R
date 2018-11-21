@@ -1,8 +1,7 @@
 #install.packages("shiny")
-# install.packages("shinydashboard")
+#install.packages("shinydashboard")
 
-setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-setwd("../texts")
+library(rstudioapi)
 
 library(shiny)
 library(shinydashboard)
@@ -45,19 +44,19 @@ shinyUI(
         tabItem("Introduction", 
                 h2("Introduction"),
                 hr(),
-                includeHTML("introduction.html")
+                includeHTML("./texts/introduction.html")
                 ),
         
         tabItem("geostatistics", 
                 h2("Geostatistics"),
                 hr(),
-                includeHTML("geostatistics.html")
+                includeHTML("./texts/geostatistics.html")
                 ),
 
         tabItem("kriging_in_general",
                 h2("Kriging in general"),
                 hr(),
-                includeHTML("general_kriging.html")
+                includeHTML("./texts/general_kriging.html")
                 ),
         
         tabItem("kriging_non_robust", 

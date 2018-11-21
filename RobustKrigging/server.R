@@ -1,10 +1,13 @@
 #install.packages("geoR")
 #install.packages("rstudioapi")
 #install.packages("georob")
+#install.packages('rsconnect')
 
+#
+#library(rsconnect)
 library(rstudioapi)
-
-setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+library(shiny)
+library(shinydashboard)
 
 library(geoR)
 data(s100)
