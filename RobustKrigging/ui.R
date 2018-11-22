@@ -22,19 +22,40 @@ shinyUI(
                            tabName = 'geostatistics'
                            ),
                   
-                  menuItem('Kriging',
-                           tabName = 'kriging',
-                           menuSubItem('Kriging in general',
-                                       tabName = 'kriging_in_general'
+                  menuItem('Variograms',
+                           tabName = 'variograms',
+                           menuSubItem('Used data',
+                                       tabName = 'used_data'
                                        ),
                            
-                           menuSubItem('Non robust kriging',
+                           menuSubItem('Non robust variogram',
+                                       tabName = 'theory_nonrobust'
+                                       ),
+                           
+                           menuSubItem('Non robust example',
                                        tabName = 'kriging_non_robust'
+                           ),
+                           
+                           menuSubItem('Robust variogram',
+                                       tabName = 'theory_robust'
                                        ),
                            
-                           menuSubItem('Robust kriging',
+                           menuSubItem('Robust example',
                                        tabName = 'kriging_robust'
                                        )
+                           ),
+                  menuItem('Kriging',
+                           tabName = 'kriging',
+                           
+                           menuSubItem('Kriging in general',
+                                       tabName = 'kriging_general'),
+                           
+                           menuSubItem('Non robust kriging',
+                                       tabName = 'nonrobust_kriging'),
+                           
+                           menuSubItem('Robust kriging',
+                                       tabName = 'robust_kriging')
+                           
                            )
                   
                   )
@@ -53,11 +74,25 @@ shinyUI(
                 includeHTML("./texts/geostatistics.html")
                 ),
 
-        tabItem("kriging_in_general",
-                h2("Kriging in general"),
+        tabItem("theory_nonrobust",
+                h2("Non robust variogram"),
                 hr(),
-                includeHTML("./texts/general_kriging.html")
+                includeHTML("./texts/nonrobust.html")
                 ),
+        
+        tabItem("theory_robust",
+                h2("Robust variogram"),
+                hr(),
+                includeHTML("./texts/robust.html")
+        ),
+        
+        tabItem("used_data",
+                h2("Used data"),
+                hr(),
+                includeHTML("./texts/introduction_data.html")
+        ),
+        
+        
         
         tabItem("kriging_non_robust", 
                 h2("Non robust kriging"),
@@ -94,7 +129,34 @@ shinyUI(
         
         tabItem("kriging_robust", 
                 h2("Robust kriging")
-                )
+
+                
+                
+                
+                
+                
+                
+                
+                ),
+        
+        tabItem("kriging_general",
+                h2("Kriging in general"),
+                hr(),
+                includeHTML("./texts/general_kriging.html")
+        ),
+        
+        tabItem("nonrobust_kriging",
+                h2("Non robust kriging"),
+                hr(),
+                includeHTML("./texts/nonrobust_kriging.html")
+        ),
+
+        tabItem("robust_kriging",
+                h2("Robust kriging"),
+                hr(),
+                includeHTML("./texts/robust_kriging.html")
+        )
+        
         
                )
       
