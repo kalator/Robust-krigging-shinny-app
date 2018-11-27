@@ -128,11 +128,30 @@ shinyUI(
                 ),
         
         tabItem("kriging_robust", 
-                h2("Robust kriging")
+                h2("Robust kriging"),
 
+                fluidRow(
+                  box(width = 4, 
+                      selectInput('variogram.model', 
+                                  label = 'Choose theoretical variogram:', 
+                                  choices = c('Spherical',
+                                              'Exponential',
+                                              'Gaussian',
+                                              'Cubic')
+                      ),
+                      
+                      hr(),
+                      uiOutput("nugetSlider2"),
+                      hr(),
+                      uiOutput("sillSlider2"),
+                      hr(),
+                      uiOutput("rangeSlider2")
+                      
+                  )
+                ),
                 
-                
-                
+                box(width = 7,
+                    plotOutput("robustvariogram"))
                 
                 
                 

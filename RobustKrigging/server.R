@@ -51,6 +51,10 @@ shinyServer
     })
     
     
+    
+    
+    
+    
       output$variogram <- renderPlot({
         nuget <- 0
         choosen <-switch(input$vario_type,
@@ -74,22 +78,46 @@ shinyServer
       }      )
       
       
-      output$robust_variogram <- renderPlot({
-        nuget <- 0
+      
+      output$nugetSlider2 <- renderUI({
+        sliderInput("nugget2","Nugget",min = 0,max = round(min(r.sv$gamma),2),value = 0.05)
+      })
+      
+
+      output$sillSlider2 <- renderUI({
+        sliderInput("sill2","Sill",min = 0,max = 2*round(max(r.sv$gamma),2),value = 0.1)
+      })
+      
+      output$rangeSlider2 <- renderUI({
+        sliderInput("range2","Range",min = 1,max = 2000,value = 1000)
+      })
+      
+      
+      
+      
+      output$robustvariogram <- renderPlot({
+        nuget2 <- 0.05
+        sill2 <- 0.1
+        range2 <- 1000
+        
         choosen <- switch(input$variogram.model,
                           'Spherical' = "RMspheric",
                           'Exponential' = "RMexp",
                           'Gaussian' = "RMgauss",
                           'Cubic' = "RMcubic")
         
+
+        nuget2 <- input$nugget2
+        sill2 <- input$sill2
+        range2 <- input$range2
+        
         plot(r.sv)
-        
-        
         lines(r.sv.spher <- fit.variogram.model(r.sv, variogram.mode=choosen,
-                                                param=c(variance=0.1, nugget=0.05, scale=1000)))
+                                                param=c(variance=sill2, nugget=nuget2, scale=range2)))
         
         
       })
+        
     
     
   }
