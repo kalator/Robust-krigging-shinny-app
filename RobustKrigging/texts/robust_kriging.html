@@ -1,3 +1,4 @@
+<font size="+0.5">
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 There is a formula for calculating estimate predicted value. The formula uses values 
 of nearby points and their weights.
@@ -13,19 +14,17 @@ reversed. It is necessary to fix it by systematic errors.
 
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 Lognormal kriging:
+$$Y(x) = \log (Z(x))$$
 </p>
-
-<img src="pictures\lognormal.jpg" width="200" height="40">
 
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 Reverse including the correction of systematic error:
+$$Z(x_0) = \exp(Y(x_0)+\frac{\sigma_{Y}^2}{2})$$
 </p>
-
-<img src="pictures\lognormal_reverse.jpg" width="200" height="50">
-
 
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 The technique of lognormal kriging is very often used because of it decreasing 
 scatter of testing data. The result is still partly distorted, because the data 
 is dependent on semivariogram.
 </p>
+</font>

@@ -1,3 +1,4 @@
+<font size="+0.5">
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 Geostatistic interpolation is based on character of spatial value. This character 
 can be described by variograms. The basic variogram is called experimental.
@@ -5,9 +6,10 @@ can be described by variograms. The basic variogram is called experimental.
 
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 Formula of experimental variogram:
+$$\gamma(h) = \frac{1}{2n}\sum_i[z(x_i)-z(x_i+h)]^2$$
 </p>
 
-<img src="pictures\exp_variogram.jpg">
+
 
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 The experimental variogram is made of isolated points, it is necessary to 
@@ -25,19 +27,21 @@ distance h.
 
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 Exponential model is used for linear dependent data:
+$$\gamma(h) = C(1-e^{-ha})$$
 </p>
-
-<img src="pictures\exponential.jpg">
 
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 Spherical model is used for linear dependent data:
+\begin{align}
+h \leq a: \ \gamma(h) &= C(\frac{3h}{2a}-\frac{h^3}{2a^3})\\
+h \geq a: \ \gamma(h) &= C 
+\end{align}
 </p>
-
-<img src="pictures\spheric.jpg">
 
 <p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
 Gauss model has similar character as exponential but the begining has parabolic 
 course.
+$$\gamma(h) = C(1-e^{-\frac{h^2}{a^2}})$$
 </p>
 
-<img src="pictures\gauss.jpg">
+</font>
