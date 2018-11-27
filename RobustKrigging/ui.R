@@ -1,12 +1,10 @@
 #install.packages("shiny")
 #install.packages("shinydashboard")
-#install.packages("markdown")
 
 library(rstudioapi)
 
 library(shiny)
 library(shinydashboard)
-library(markdown)
 
 shinyUI(
   dashboardPage(
@@ -64,6 +62,7 @@ shinyUI(
                   )
                     ),
     dashboardBody(
+      withMathJax(),
       tabItems(
         tabItem("Introduction", 
                 h2("Introduction"),
@@ -80,7 +79,7 @@ shinyUI(
         tabItem("theory_nonrobust",
                 h2("Non robust variogram"),
                 hr(),
-                withMathJax(includeHTML("./texts/nonrobust.html"))
+                includeHTML("./texts/nonrobust.html")
                 ),
         
         tabItem("theory_robust",
