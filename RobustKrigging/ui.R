@@ -9,7 +9,7 @@ library(shinydashboard)
 shinyUI(
   dashboardPage(
     skin = "green",
-    dashboardHeader(title = "Kriging", 
+    dashboardHeader(title = "Learn kriging 0.1", 
                     titleWidth = 200
                     ),
     
@@ -18,10 +18,6 @@ shinyUI(
                   menuItem('Introduction', 
                            tabName = "Introduction"
                           ),
-                  
-                  menuItem('Geostatistics',
-                           tabName = 'geostatistics'
-                           ),
                   
                   menuItem('Variograms',
                            tabName = 'variograms',
@@ -65,15 +61,7 @@ shinyUI(
       withMathJax(),
       tabItems(
         tabItem("Introduction", 
-                h2("Introduction"),
-                hr(),
                 includeHTML("./texts/introduction.html")
-                ),
-        
-        tabItem("geostatistics", 
-                h2("Geostatistics"),
-                hr(),
-                includeHTML("./texts/geostatistics.html")
                 ),
 
         tabItem("theory_nonrobust",
