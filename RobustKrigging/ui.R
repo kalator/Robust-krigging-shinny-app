@@ -133,7 +133,7 @@ shinyUI(
                 h2("Robust kriging"),
 
                 fluidRow(
-                  box(width = 4, 
+                box(width = 4, 
                       selectInput('variogram.model', 
                                   label = 'Choose theoretical variogram:', 
                                   choices = c('Spherical',
@@ -149,11 +149,12 @@ shinyUI(
                       hr(),
                       uiOutput("rangeSlider2")
                       
-                  )
-                ),
+                  ),
+                
                 
                 box(width = 7,
                     plotOutput("robustvariogram"))
+                )
                 
                 
                 

@@ -23,7 +23,7 @@ data(meuse, package="sp")
 r.lm <- lm(log(zinc)~sqrt(dist)+ffreq, meuse)
 r.sv <- sample.variogram(residuals(r.lm), locations=meuse[, c("x","y")],
                          lag.dist.def=100, max.lag=2000,
-                         estimator="matheron")
+                         estimator="ch")
 #plot(r.sv)
 
 
