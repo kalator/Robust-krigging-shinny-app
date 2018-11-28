@@ -1,0 +1,65 @@
+<font size="+0.5">
+<h2>Variogram</h2>
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+The geostatistical interpolation is based on characteristics of spatial random field. Variogram is a function describing these characteristics. Let <i>z(x)</i> be the observed value at point <i>x</i>. Variogram shows how the value of <i>z</i> will alter with a shift of distance <i>h</i>. The equation for so called <b>experimental variogram</b>:
+$$\gamma(h) = \frac{1}{2n}\sum_i[z(x_i)-z(x_i+h)]^2$$
+where <i>&gamma;(h)</i> is a semivariance of <i>z</i> for distance of <i>h</i>. 
+<br>
+<br>
+<br>
+<img src = 'experimental_variogram.svg' width="80%" height="80%">
+<br>
+<br>
+<br>
+The experimental variogram is composed of isolated discrete points, therefore it is necessary to have it aproximated by so called <b>theoretical variogram</b>. The theoretical variogram could be described with exact mathematical formula. A model of theoretical variogram is choosen accordingly to the characteristics of the experimental variogram. The most common method used for this process is called "by-eye" (what fits the greatest). Basic types of models are exponential, spherical and Gaussian model.
+<br>
+<br>
+<br>
+<img src = 'theoretical_variogram.svg' width="80%" height="80%">
+<br>
+<br>
+<br>
+In example above, it is apparent that the best fitting model of theoretical variogram is the exponential one. The mathematical equations for basic model types:
+<ul>
+<li>
+<p style="word-wrap: break-word; width: 74ch; text-align: justify"> 
+<b>Exponential</b> model is used for lineary dependent data:
+$$\gamma(h) = C(1-e^{-ha})$$
+</li>
+<\p>
+<li>
+<p style="word-wrap: break-word; width: 74ch; text-align: justify"> 
+<b>Spherical</b> model is used for lineary dependent data with greater dependence of closer values:
+\begin{align}
+h \leq a: \ \gamma(h) &= C(\frac{3h}{2a}-\frac{h^3}{2a^3})\\
+h \geq a: \ \gamma(h) &= C 
+\end{align}
+</p>
+</li>
+
+<li>
+<p style="word-wrap: break-word; width: 74ch; text-align: justify"> 
+<b>Gaussian</b> model has similar character as exponential but the begining has parabolic course representing a slow decrease of spatial dependence:
+$$\gamma(h) = C(1-e^{-\frac{h^2}{a^2}})$$
+</p>
+</li>
+</ul>
+where <i>C</i> and <i>a</i> are two of three basic parameters of variogram: <br> <br>
+<ul>
+<li>
+<b>Sill</b> (<i>C</i>) - value of variogram from which there are no changes in following values
+</li>
+<li>
+<b>Range</b> (<i>a</i>) - distance where variogram reaches its maximum (sill)
+</li>
+<li>
+<b>Nugget</b> - shift of variogram in its begining.
+</li>
+</ul>
+<br>
+<img src = 'sill_nugget_range.gif' width="450px" height="439px">
+<br>
+<br>
+<br>
+</p>
+</font>

@@ -18,15 +18,9 @@ shinyUI(
                   menuItem('Introduction', 
                            tabName = "Introduction"
                           ),
-                  
-                  menuItem('Variograms',
-                           tabName = 'variograms',
-                           menuSubItem('Used data',
-                                       tabName = 'used_data'
-                                       ),
-                           
-                           menuSubItem('Non robust variogram',
-                                       tabName = 'theory_nonrobust'
+                  menuItem('Theory of kriging',
+                           menuSubItem('Variogram',
+                                       tabName = 'theory_variograms'
                                        ),
                            
                            menuSubItem('Non robust example',
@@ -39,11 +33,12 @@ shinyUI(
                            
                            menuSubItem('Robust example',
                                        tabName = 'kriging_robust'
-                                       )
+                                       ),
+                           menuSubItem('Used data',
+                                       tabName = 'used_data'
+                           )
                            ),
-                  menuItem('Kriging',
-                           tabName = 'kriging',
-                           
+                  menuItem('Examples',
                            menuSubItem('Kriging in general',
                                        tabName = 'kriging_general'),
                            
@@ -64,10 +59,9 @@ shinyUI(
                 includeHTML("./texts/introduction.html")
                 ),
 
-        tabItem("theory_nonrobust",
-                h2("Non robust variogram"),
-                hr(),
-                includeHTML("./texts/nonrobust.html")
+        tabItem("theory_variograms",
+                includeHTML("./texts/theory_variograms.html")
+                
                 ),
         
         tabItem("theory_robust",
