@@ -10,6 +10,8 @@ library(shiny)
 library(shinydashboard)
 
 library(geoR)
+
+
 data(s100)
 
 cloud1 <- variog(s100, option = "cloud", max.dist=1)
