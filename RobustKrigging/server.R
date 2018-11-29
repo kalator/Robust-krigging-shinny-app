@@ -110,14 +110,44 @@ shinyServer
         range2 <- input$range2
         
         plot(r.sv)
-        lines(r.sv.spher <- fit.variogram.model(r.sv, variogram.mode=choosen,
-                                                param=c(variance=(sill2*sill2), nugget=(nuget2*nuget2), scale=range2)))
+        r.sv.spher <- fit.variogram.model(r.sv, variogram.mode=choosen,
+                                                param=c(variance=(sill2*sill2), nugget=(nuget2*nuget2), scale=range2))
+        
+        lines(r.sv.spher,   lwd = 10, col='purple')
         
         
       })
-        
       
-
+      output$rob_kriging  <- renderPlot({
+        library(sp)
+        r.georob.m0.spher.reml <- georob(log(zinc)~sqrt(dist)+ffreq, meuse, locations=~x+y,
+                                         variogram.model="RMspheric", param=c(variance=0.1, nugget=0.05, scale=1000),
+                                         tuning.psi=1000)
+        r.georob.m0.spher.ml <- update(r.georob.m0.spher.reml,
+                                       control=control.georob(ml.method="ML"))
+        
+        extractAIC(r.georob.m0.spher.reml, REML=TRUE)
+        extractAIC(r.georob.m0.spher.ml)
+        r.georob.m0.spher.ml
+        
+        data(meuse.grid)
+        coordinates(meuse.grid) <- ~x+y
+        gridded(meuse.grid) <- TRUE
+        
+        
+        
+        r.pk <- predict(r.georob.m0.spher.reml, newdata=meuse.grid,
+                        control=control.predict.georob(extended.output=TRUE))
+        r.pk <- lgnpp(r.pk)
+        str(r.pk)
+        
+        brks <- c(25, 50, 75, 100, 150, 200, seq(500, 3500,by=500))
+        pred <- spplot(r.pk, zcol="lgn.pred", at=brks, main="prediction")
+        plot(pred)
+        
+        
+        
+      })
     
   }
  
