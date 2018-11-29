@@ -67,11 +67,15 @@ shinyServer
           ols.n <- variofit(bin1, ini = c(1,0.5), nugget=0.5, weights="equal")
           lines(ols.n, lty = 2, max.dist = 1)
         }
-        vv <- variofit(cov.model = choosen, cov.pars = c(sill, range), nugget = nuget, max.dist = 1)
-        lines(vv,   lwd = 3, col='purple')
+        vv <- variofit(v1,cov.model = "exponential")
+        lines(v2)
+        lines.variomodel(cov.model = choosen, cov.pars = c(sill, range), nugget = nuget, max.dist = 1,  lwd = 3, col='purple')
+        
       }      )
     
-
+    randomVals <- eventReactive(input$class_krig, {
+    
+          })
     
     
       

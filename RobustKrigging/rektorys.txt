@@ -1,0 +1,6 @@
+1) představení, obsah, úvod - Peťa - 1:30
+2)Klasické krigování - já - 3:30, 
+3)Robustní krigování - Péťa - 4:30
+4)Shiny - já - 7:30 , popsat princip, popsat mathjax, html, zmínit různé modely (nebo spíš ukázat v aplikaci)
+5)Zhodnocení balíčku shiny pro tvorbu webových stránek - mathml nefungoval, načítání obrázků, pro začátečníky méně přehledné, existují nadefinovaná témata, shinyapps.io - umí balíčky a bla bla bla, dynamicky rozvíjející část R-ka, známe z budapešti, používá hodně vědců... - Peťa - 9:30
+5)Moodle - Peťa - 10:30
