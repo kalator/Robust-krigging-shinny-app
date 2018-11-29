@@ -77,7 +77,6 @@ shinyUI(
         
         tabItem("kriging_non_robust", 
                 h2("Non robust kriging"),
-                "blahblahblah",
                 fluidRow(
                 box(width = 4, 
                     selectInput('vario_type', 
@@ -92,9 +91,6 @@ shinyUI(
                     hr(),
                     uiOutput("nugetSlider"),
                     hr(),
-                    #checkboxInput('fixnuget', 
-                    #              label = 'Fixed nugget', 
-                    #              value = FALSE),
                     #hr(),
                     uiOutput("sillSlider"),
                     hr(),
@@ -103,9 +99,15 @@ shinyUI(
                     
                    ),
                 box(width = 7, 
-                    plotOutput("variogram")
+                    plotOutput("variogram"),
+                    checkboxInput('def_vario', 
+                                  label = 'Add default variogram', 
+                                  value = FALSE),
+                    actionButton("class_krig", "Interpolate!", width = '160px')
                    )
-                        )
+                )
+                  
+                
                 ),
         
         tabItem("kriging_robust", 

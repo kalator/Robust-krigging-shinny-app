@@ -14,10 +14,6 @@ library(georob)
 
 data(s100)
 
-cloud1 <- variog(s100, option = "cloud", max.dist=1)
-cloud2 <- variog(s100, option = "cloud", estimator.type = "modulus", max.dist=1)
-bin2  <- variog(s100, uvec=seq(0,1,l=11), estimator.type= "modulus")
-
 library(georob)
 data(meuse, package="sp")
 r.lm <- lm(log(zinc)~sqrt(dist)+ffreq, meuse)
@@ -52,12 +48,7 @@ shinyServer
       sliderInput("range","Range",min = 0,max = 1,value = 0.3)
     })
     
-    
-    
-    
-    
-    
-      output$variogram <- renderPlot({
+    output$variogram <- renderPlot({
         nuget <- 0
         choosen <-switch(input$vario_type,
                          'Spherical' = "sph",
@@ -65,19 +56,24 @@ shinyServer
                          'Gaussian' = "gaussian",
                          'Cubic' = 'cubic'
                        )
-        #fixedNuget <-switch(input$fixnuget,
-        #                    TRUE,
-        #                    FALSE)
         nuget <- input$nugget
         bins <- input$bins
         sill <- input$sill
         range <- input$range
         
         bin1 <- variog(s100, uvec=seq(0,1,l=bins))
-        plot(bin1)
-        lines.variomodel(cov.model = choosen, cov.pars = c(sill, range), nugget = nuget, max.dist = 1,  lwd = 3)
-      
+        plot(bin1, col = 'red')
+        if(input$def_vario){
+          ols.n <- variofit(bin1, ini = c(1,0.5), nugget=0.5, weights="equal")
+          lines(ols.n, lty = 2, max.dist = 1)
+        }
+        vv <- variofit(cov.model = choosen, cov.pars = c(sill, range), nugget = nuget, max.dist = 1)
+        lines(vv,   lwd = 3, col='purple')
       }      )
+    
+
+    
+    
       
       
       
