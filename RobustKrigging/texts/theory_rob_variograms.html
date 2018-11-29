@@ -1,0 +1,26 @@
+<font size="+0.5">
+<h2>Robust variograms</h2>
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+It was first mentioned in 1961. Robustness is capacity of being inert to 
+small but deliberate changes to the method parameters. It provides information 
+about its reliability during normal use. In general, it is insensitive to small 
+deviations from ideal assumptions for which the estimation method is optimized.
+</p>
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+The classic example of robust method is median. It is a special case of percentile. 
+The values are sorted by size and the one in the middle is median. One of big 
+advantage of median is its robustness, because it is not affected by remote values.
+</p>
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+The first estimate of robust variogram was in 1980 by Cressie and Hawkins. They devised two types of variograms.
+</p>
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+Variogram in basic form:
+$$\gamma(h) = \frac{(\frac{1}{N(h)}\sum (z(x_i)-z(x_i+h)^{\frac{1}{2}}))^4}{2(0.457+\frac{0.494}{N(h)})}$$
+</p>
+
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+Variogram based on the count of median:
+$$\gamma(h) = \frac{med(z(x_i)-z(x_i+h)^{\frac{1}{2}} \ : \ h \in N(h))^4}{2\cdot 0.457}$$
+</p>
+</font>

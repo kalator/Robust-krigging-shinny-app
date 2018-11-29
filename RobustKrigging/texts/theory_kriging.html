@@ -1,0 +1,42 @@
+<font size="+0.5">
+<h2>Kriging</h2>
+<p style="word-wrap: break-word; width: 80ch; text-align: justify"> 
+Kriging is a geostatistical algorithm of interpolation that is based on weighted mean with optimized weights to minimize the error of estimate. Variogram is used for retrieving such weights. Method of kriging was developed in geology and it is suitable to use in cases, where a spatial variable is modified within space with certain continuity (e.g. observed
+values of maximum temperature are more similar at points that are
+closer to each other) but it is not possible to describe such variable with simple function.
+<br>
+<br>
+There are several types of kriging. A basic method of kriging is called <b>Ordinary kriging (OK)</b>. This method is considering unknown expected value that is constant in whole area. The value of predicted variable <i>z*</i> at point <i>x<sub>0</sub></i> in space is computed using values from surrounding points <i>z(x<sub>i</sub>)</i> and their weights <i>&lambda;<sub>i</sub></i>:
+$$z^*(x_0) = \sum \lambda_i z(x_i)$$
+<br>
+Let's compare this method with e.g. the approach of interpolation method IDW (inverse distance weighting), where weights are calculated as inverted value of distances (or powered distances). This method doesn't consider mutual configuration of data points. The aim of kriging is to eliminate this drawback. 
+<br>
+There are two conditions for weights in kriging:
+
+<ul>
+<li>
+<p style="word-wrap: break-word; width: 74ch; text-align: justify">
+The expected value must be zero, therefore sum of weights must equal 1:
+$$\sum \lambda_i = 1$$
+</p>
+</li>
+
+<li>
+<p style="word-wrap: break-word; width: 74ch; text-align: justify">
+The variance of estimate of the correct value is minimal:
+$$\sigma^2 = var[z(x_0)-z^*(x_0)] = min$$
+</p>
+</li>
+</ul>
+
+With further adjustments we will get Kriging equation system:
+<p style="word-wrap: break-word; width: 74ch; text-align: justify">
+$$\sum_j \lambda_j \gamma(x_i-x_j) + \mu_L = \gamma(x_i-x_0),i=1,2,...,n$$
+$$\sum_j \lambda_j = 1$$
+</p>
+<p style="word-wrap: break-word; width: 80ch; text-align: justify">
+where <i>&mu;<sub>L</sub></i> is Lagrange multiplier. The equation system has n+1 equations for n+1 unknown variables (weights and Lagrange multiplier).
+
+</p>
+</p>
+</font>

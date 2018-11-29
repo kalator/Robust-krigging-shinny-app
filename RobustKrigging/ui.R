@@ -22,33 +22,29 @@ shinyUI(
                            menuSubItem('Variogram',
                                        tabName = 'theory_variograms'
                                        ),
-                           
-                           menuSubItem('Non robust example',
-                                       tabName = 'kriging_non_robust'
-                           ),
-                           
+                           menuSubItem('Kriging',
+                                       tabName = 'theory_kriging'
+                                       ),
                            menuSubItem('Robust variogram',
-                                       tabName = 'theory_robust'
+                                       tabName = 'theory_rob_variograms'
                                        ),
-                           
-                           menuSubItem('Robust example',
-                                       tabName = 'kriging_robust'
-                                       ),
-                           menuSubItem('Used data',
-                                       tabName = 'used_data'
-                           )
+                           menuSubItem('Robust kriging',
+                                       tabName = 'theory_rob_kriging'
+                                       )
                            ),
                   menuItem('Examples',
-                           menuSubItem('Kriging in general',
-                                       tabName = 'kriging_general'),
-                           
-                           menuSubItem('Non robust kriging',
-                                       tabName = 'nonrobust_kriging'),
-                           
-                           menuSubItem('Robust kriging',
-                                       tabName = 'robust_kriging')
-                           
-                           )
+
+                            menuSubItem('Non robust example',
+                                        tabName = 'kriging_non_robust'
+                            ),
+                            
+                            menuSubItem('Robust example',
+                                        tabName = 'kriging_robust'
+                            ),
+                            menuSubItem('Used data',
+                                        tabName = 'used_data'
+                            )
+                  )
                   
                   )
                     ),
@@ -61,15 +57,16 @@ shinyUI(
 
         tabItem("theory_variograms",
                 includeHTML("./texts/theory_variograms.html")
-                
                 ),
-        
-        tabItem("theory_robust",
-                h2("Robust variogram"),
-                hr(),
-                includeHTML("./texts/robust.html")
-        ),
-        
+        tabItem("theory_kriging",
+                includeHTML("./texts/theory_kriging.html")
+                ),
+        tabItem("theory_rob_variograms",
+                includeHTML("./texts/theory_rob_variograms.html")
+                ),
+        tabItem("theory_rob_kriging",
+                includeHTML("./texts/theory_rob_kriging.html")
+                ),
         tabItem("used_data",
                 h2("Used data"),
                 hr(),
