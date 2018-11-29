@@ -67,8 +67,31 @@ shinyServer
           ols.n <- variofit(bin1, ini = c(1,0.5), nugget=0.5, weights="equal")
           lines(ols.n, lty = 2, max.dist = 1)
         }
-        
+        lines.variomodel(cov.model = choosen, cov.pars = c(sill, range), nugget = nuget, max.dist = 1,  lwd = 3, col='purple')
+
       }      )
+    
+    output$nonrob_krig <-renderPlot({
+      nuget <- 0
+      choosen <-switch(input$vario_type,
+                       'Spherical' = "sph",
+                       'Exponential' = "exp",
+                       'Gaussian' = "gaussian",
+                       'Cubic' = 'cubic'
+      )
+      nuget <- input$nugget
+      bins <- input$bins
+      sill <- input$sill
+      range <- input$range
+      
+      s100.ml <- variofit(bin1, cov.model = choosen, ini.cov.pars = c(sill, range), nugget = nuget, max.dist = 1)
+      s100.gr <- expand.grid((0:100)/100, (0:100)/100)
+      s100.kc <- krige.conv(s100, locations = s100.gr, krige = krige.control(obj.model = s100.ml))
+      image(s100.kc)
+      #breaks <- seq(min(s100$data), max(s100$data),length.out=10)
+      
+      
+    })
     
     randomVals <- eventReactive(input$class_krig, {
     

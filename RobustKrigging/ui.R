@@ -99,11 +99,12 @@ shinyUI(
                       
                       
                   ),
-                  box(width = 7, 
+                  box(width = 4, 
                       plotOutput("variogram"),
                       checkboxInput('def_vario', 
                                     label = 'Draw default variogram', 
-                                    value = FALSE)
+                                    value = FALSE),
+                      plotOutput("nonrob_krig")
                   )
                 )
         ),

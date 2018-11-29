@@ -57,3 +57,5 @@ legend("topleft", legend=c("Robust", "Non-robust"),
 
 # ohodnotila bych to blby data - lisi se ale minimalne... ta nerobustni metoda se vyuziva
 # u toho estimator
+
+points(s100, col = "red")
