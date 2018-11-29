@@ -10,7 +10,7 @@ library(shiny)
 library(shinydashboard)
 
 library(geoR)
-
+library(georob)
 
 data(s100)
 
@@ -115,12 +115,13 @@ shinyServer
         
         plot(r.sv)
         lines(r.sv.spher <- fit.variogram.model(r.sv, variogram.mode=choosen,
-                                                param=c(variance=sill2, nugget=nuget2, scale=range2)))
+                                                param=c(variance=(sill2*sill2), nugget=(nuget2*nuget2), scale=range2)))
         
         
       })
         
-    
+      
+
     
   }
  
