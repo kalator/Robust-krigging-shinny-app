@@ -34,18 +34,16 @@ shinyUI(
                                  ),
                                  menuItem('Examples',
                                           
-                                          menuSubItem('Non robust example',
+                                          menuSubItem('Classical kriging',
                                                       tabName = 'kriging_non_robust'
                                           ),
                                           
-                                          menuSubItem('Robust example',
+                                          menuSubItem('Robust kriging',
                                                       tabName = 'kriging_robust'
                                           ),
                                           menuSubItem('Used data',
                                                       tabName = 'used_data'
-                                          ),
-                                          menuSubItem('Robust kriging',
-                                                      tabName = 'rob_kriging')
+                                          )
                                  )
                                  
                      )
@@ -78,8 +76,7 @@ shinyUI(
         
         
         tabItem("kriging_non_robust", 
-                h2("Non robust kriging"),
-                "blahblahblah",
+                h2("Classical kriging"),
                 fluidRow(
                   box(width = 4, 
                       selectInput('vario_type', 
@@ -94,9 +91,7 @@ shinyUI(
                       hr(),
                       uiOutput("nugetSlider"),
                       hr(),
-                      #checkboxInput('fixnuget', 
-                      #              label = 'Fixed nugget', 
-                      #              value = FALSE),
+
                       #hr(),
                       uiOutput("sillSlider"),
                       hr(),
@@ -105,7 +100,10 @@ shinyUI(
                       
                   ),
                   box(width = 7, 
-                      plotOutput("variogram")
+                      plotOutput("variogram"),
+                      checkboxInput('def_vario', 
+                                    label = 'Draw default variogram', 
+                                    value = FALSE)
                   )
                 )
         ),
@@ -134,52 +132,25 @@ shinyUI(
                   
                   
                   box(width = 7,
-                      plotOutput("robustvariogram"))
+                      plotOutput("robustvariogram")),
+                  plotOutput("rob_kriging"))
+                
                 )
                 
                 
                 
                 
-        ),
         
-        tabItem("kriging_general",
-                h2("Kriging in general"),
-                hr(),
-                includeHTML("./texts/general_kriging.html")
-        ),
         
-        tabItem("nonrobust_kriging",
-                h2("Non robust kriging"),
-                hr(),
-                includeHTML("./texts/nonrobust_kriging.html")
-        ),
         
-        tabItem("robust_kriging",
-                h2("Robust kriging"),
-                hr(),
-                includeHTML("./texts/robust_kriging.html")
-        ),
-        
-        tabItem("rob_kriging",
-                h2("Robust kriging"),
-                hr(),
-                
-                fluidRow(
-                  box(width = 5,
-                  plotOutput("rob_kriging")),
-                  
-                  box(width = 5,
-                    includeHTML("./texts/meuse.html")
-                  )
-                  
-                  
-                )
-                
-                
         )
+    
+                
+                
         
         
-      )
+        
+      
       
     )
   )

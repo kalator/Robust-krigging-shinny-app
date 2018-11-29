@@ -67,9 +67,6 @@ shinyServer
           ols.n <- variofit(bin1, ini = c(1,0.5), nugget=0.5, weights="equal")
           lines(ols.n, lty = 2, max.dist = 1)
         }
-        vv <- variofit(v1,cov.model = "exponential")
-        lines(v2)
-        lines.variomodel(cov.model = choosen, cov.pars = c(sill, range), nugget = nuget, max.dist = 1,  lwd = 3, col='purple')
         
       }      )
     
@@ -122,36 +119,36 @@ shinyServer
         
       })
       
-      output$rob_kriging  <- renderPlot({
-        library(sp)
-        r.georob.m0.spher.reml <- georob(log(zinc)~sqrt(dist)+ffreq, meuse, locations=~x+y,
-                                         variogram.model="RMspheric", param=c(variance=0.1, nugget=0.05, scale=1000),
-                                         tuning.psi=1000)
-        r.georob.m0.spher.ml <- update(r.georob.m0.spher.reml,
-                                       control=control.georob(ml.method="ML"))
-        
-        extractAIC(r.georob.m0.spher.reml, REML=TRUE)
-        extractAIC(r.georob.m0.spher.ml)
-        r.georob.m0.spher.ml
-        
-        data(meuse.grid)
-        coordinates(meuse.grid) <- ~x+y
-        gridded(meuse.grid) <- TRUE
-        
-        
-        
-        r.pk <- predict(r.georob.m0.spher.reml, newdata=meuse.grid,
-                        control=control.predict.georob(extended.output=TRUE))
-        r.pk <- lgnpp(r.pk)
-        str(r.pk)
-        
-        brks <- c(25, 50, 75, 100, 150, 200, seq(500, 3500,by=500))
-        pred <- spplot(r.pk, zcol="lgn.pred", at=brks, main="prediction")
-        plot(pred)
+#      output$rob_kriging  <- renderPlot({
+#        library(sp)
+#        r.georob.m0.spher.reml <- georob(log(zinc)~sqrt(dist)+ffreq, meuse, locations=~x+y,
+#                                         variogram.model="RMspheric", param=c(variance=0.1, nugget=0.05, scale=1000),
+#                                         tuning.psi=1000)
+#        r.georob.m0.spher.ml <- update(r.georob.m0.spher.reml,
+#                                       control=control.georob(ml.method="ML"))
+#        
+#        extractAIC(r.georob.m0.spher.reml, REML=TRUE)
+#        extractAIC(r.georob.m0.spher.ml)
+#        r.georob.m0.spher.ml
+##        
+#        data(meuse.grid)
+#        coordinates(meuse.grid) <- ~x+y
+#        gridded(meuse.grid) <- TRUE
         
         
         
-      })
+#        r.pk <- predict(r.georob.m0.spher.reml, newdata=meuse.grid,
+#                        control=control.predict.georob(extended.output=TRUE))
+#        r.pk <- lgnpp(r.pk)
+#        str(r.pk)
+        
+#        brks <- c(25, 50, 75, 100, 150, 200, seq(500, 3500,by=500))
+#        pred <- spplot(r.pk, zcol="lgn.pred", at=brks, main="prediction")
+#        plot(pred)
+        
+        
+        
+#      })
     
   }
  
