@@ -11,6 +11,7 @@ library(shinydashboard)
 
 library(geoR)
 library(georob)
+library(lattice)
 
 data(s100)
 
@@ -87,7 +88,7 @@ shinyServer
       s100.ml <- variofit(bin1, cov.model = choosen, ini.cov.pars = c(sill, range), nugget = nuget, max.dist = 1)
       s100.gr <- expand.grid((0:100)/100, (0:100)/100)
       s100.kc <- krige.conv(s100, locations = s100.gr, krige = krige.control(obj.model = s100.ml))
-      image(s100.kc)
+      levelplot(predict~s100.gr$Var1*s100.gr$Var2, data = s100.kc,col.regions = terrain.colors(100),xlab = "X", ylab = "Y")
       #breaks <- seq(min(s100$data), max(s100$data),length.out=10)
       
       

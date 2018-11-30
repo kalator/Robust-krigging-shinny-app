@@ -5,8 +5,8 @@ account: kalator
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 583234
-bundleId: 1729955
+bundleId: 1730778
 url: https://kalator.shinyapps.io/robustkrigging/
-when: 1543534320.52027
+when: 1543567326.71154
 asMultiple: FALSE
 asStatic: FALSE
